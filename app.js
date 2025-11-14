@@ -61,7 +61,7 @@ app.get("/set-best-time/:category/:time", (req, res) => {
           console.error("Error writing to best-time.txt: ", err);
           return res.status(500).send("Can't write to file.");
         }
-        res.status(200).send("Updated best-time.txt");
+        res.status(201).send("Updated best-time.txt");
       });
     } else {
       res.status(200).send("Time not beaten, best-times not updated.");
