@@ -1,7 +1,10 @@
 const express = require("express");
 const fs = require("fs");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 
 app.get("/best-time/:category", (req, res) => {
   const category = req.params.category;
