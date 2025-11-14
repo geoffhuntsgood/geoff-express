@@ -1,0 +1,9 @@
+{
+  "name": "geoff-express",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.10"
+  }
+}
