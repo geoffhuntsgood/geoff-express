@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 const transporter = nodemailer.createTransport({
-  host: "sandbox.smtp.mailtrap.io",
+  host: "live.smtp.mailtrap.io",
   port: 587,
   secure: false,
   auth: {
