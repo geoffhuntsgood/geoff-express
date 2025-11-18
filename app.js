@@ -14,8 +14,8 @@ const transporter = nodemailer.createTransport({
   secure: false,
   auth: {
     user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
+    pass: process.env.SMTP_PASS
+  }
 });
 
 app.get("/best-time/:category", (req, res) => {
@@ -83,7 +83,7 @@ app.get("/set-best-time/:category/:time", (req, res) => {
         from: "time@geoffhuntsgood.com",
         to: "geoffhuntsgood@gmail.com",
         subject: "Pokelist Best Times Updated",
-        text: lines,
+        text: lines.join("\n")
       });
     } else {
       res.status(200).send("Time not beaten, best-times not updated.");
