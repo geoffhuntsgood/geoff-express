@@ -1,7 +1,7 @@
-import cors from "cors";
-import express from "express";
-import { readFile, writeFile } from "fs";
-import nodemailer from "nodemailer";
+const cors = require("cors");
+const express = require("express");
+const fs = require("fs");
+const nodemailer = require("nodemailer");
 require("dotenv").config();
 
 const app = express();
@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
 app.get("/best-time/:category", (req, res) => {
   const category = req.params.category;
 
-  readFile("files/best-time.txt", "utf-8", (err, data) => {
+  fs.readFile("files/best-time.txt", "utf-8", (err, data) => {
     if (err) {
       console.error("Error reading best-time.txt: ", err);
       return res.status(500).send("Can't read file.");
@@ -44,7 +44,7 @@ app.get("/set-best-time/:category/:time", (req, res) => {
     return res.status(400).send("No request body content.");
   }
 
-  readFile("files/best-time.txt", "utf-8", (err, data) => {
+  fs.readFile("files/best-time.txt", "utf-8", (err, data) => {
     if (err) {
       console.error("Error reading best-time.txt: ", err);
       return res.status(500).send("Can't read file.");
@@ -71,7 +71,7 @@ app.get("/set-best-time/:category/:time", (req, res) => {
     if (idx !== -1) {
       lines[idx] = `${category}~${newTime[0]}:${newTime[1]}:${newTime[2]}`;
 
-      writeFile("files/best-time.txt", lines.join("\n"), "utf-8", (err) => {
+      fs.writeFile("files/best-time.txt", lines.join("\n"), "utf-8", (err) => {
         if (err) {
           console.error("Error writing to best-time.txt: ", err);
           return res.status(500).send("Can't write to file.");
