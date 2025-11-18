@@ -83,7 +83,7 @@ app.get("/set-best-time/:category/:time", (req, res) => {
         from: "time@geoffhuntsgood.com",
         to: "geoffhuntsgood@gmail.com",
         subject: "Pokelist Best Times Updated",
-        text: data,
+        text: lines,
       });
     } else {
       res.status(200).send("Time not beaten, best-times not updated.");
